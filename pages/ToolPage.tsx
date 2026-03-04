@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
 import { TOOLS } from '../constants';
-import FileUploader from '../components/FileUploader';
+import { FileUpload } from '../components/ui/file-upload';
 import ProcessingLoader from '../components/ProcessingLoader';
 import { FileState, ProcessingResult } from '../types';
 import { processFiles } from '../services/toolService';
@@ -107,16 +107,21 @@ const ToolPage: React.FC = () => {
             <div className="p-3 bg-slate-800 rounded-xl text-cyan-400">
               <tool.icon className="w-8 h-8" />
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-white">{tool.name}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold text-cyan-400">{tool.name}</h1>
           </div>
           <p className="text-slate-400 mb-8 text-lg">{tool.description}</p>
 
           {!isProcessing && !result && (
             <div className="animate-in fade-in zoom-in duration-500">
-              <FileUploader
-                onFilesSelected={setFiles}
-                accept={tool.accepts}
-                multiple={tool.multiple}
+              <FileUpload
+                onChange={(newFiles) => {
+                  const fileStates: FileState[] = newFiles.map(file => ({
+                    file,
+                    id: Math.random().toString(36).substring(7),
+                    preview: file.type.startsWith('image/') ? URL.createObjectURL(file) : undefined
+                  }));
+                  setFiles(tool.multiple ? [...files, ...fileStates] : fileStates.slice(0, 1));
+                }}
               />
 
               {files.length > 0 && (

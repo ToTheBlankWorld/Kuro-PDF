@@ -2,14 +2,20 @@ import React from "react";
 import { FloatingDock } from "@/components/ui/floating-dock";
 import {
   IconBrandGithub,
-  IconBrandX,
   IconExchange,
   IconHome,
-  IconNewSection,
-  IconTerminal2,
+  IconLanguage,
+  IconTools,
 } from "@tabler/icons-react";
 
 export default function FloatingDockDemo() {
+  const handleShare = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      alert("Link copied to clipboard!");
+    });
+  };
+
   const links = [
     {
       title: "Home",
@@ -18,18 +24,17 @@ export default function FloatingDockDemo() {
       ),
       href: "/",
     },
-
     {
       title: "Tools",
       icon: (
-        <IconTerminal2 className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconTools className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "/tools",
+      href: "/#/tools",
     },
     {
-      title: "Language",
+      title: "Language: English",
       icon: (
-        <IconNewSection className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconLanguage className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
       href: "#",
     },
@@ -39,21 +44,15 @@ export default function FloatingDockDemo() {
         <IconExchange className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
       href: "#",
-    },
-
-    {
-      title: "Twitter",
-      icon: (
-        <IconBrandX className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
-      href: "#",
+      onClick: handleShare,
     },
     {
       title: "GitHub",
       icon: (
         <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#",
+      href: "https://github.com/midhun-404",
+      target: "_blank",
     },
   ];
   return (

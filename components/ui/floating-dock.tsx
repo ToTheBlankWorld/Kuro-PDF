@@ -18,12 +18,14 @@ import {
 
 import { useRef, useState } from "react";
 
+type DockItem = { title: string; icon: React.ReactNode; href: string; onClick?: (e: React.MouseEvent) => void; target?: string };
+
 export const FloatingDock = ({
   items,
   desktopClassName,
   mobileClassName,
 }: {
-  items: { title: string; icon: React.ReactNode; href: string }[];
+  items: DockItem[];
   desktopClassName?: string;
   mobileClassName?: string;
 }) => {
@@ -39,7 +41,7 @@ const FloatingDockMobile = ({
   items,
   className,
 }: {
-  items: { title: string; icon: React.ReactNode; href: string }[];
+  items: DockItem[];
   className?: string;
 }) => {
   const [open, setOpen] = useState(false);
@@ -71,6 +73,8 @@ const FloatingDockMobile = ({
                 <a
                   href={item.href}
                   key={item.title}
+                  target={item.target}
+                  onClick={item.onClick}
                   className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900"
                 >
                   <div className="h-4 w-4">{item.icon}</div>
@@ -94,7 +98,7 @@ const FloatingDockDesktop = ({
   items,
   className,
 }: {
-  items: { title: string; icon: React.ReactNode; href: string }[];
+  items: DockItem[];
   className?: string;
 }) => {
   let mouseX = useMotionValue(Infinity);
@@ -119,11 +123,15 @@ function IconContainer({
   title,
   icon,
   href,
+  onClick,
+  target,
 }: {
   mouseX: MotionValue;
   title: string;
   icon: React.ReactNode;
   href: string;
+  onClick?: (e: React.MouseEvent) => void;
+  target?: string;
 }) {
   let ref = useRef<HTMLDivElement>(null);
 
@@ -168,7 +176,7 @@ function IconContainer({
   const [hovered, setHovered] = useState(false);
 
   return (
-    <a href={href}>
+    <a href={href} onClick={onClick} target={target} rel={target === '_blank' ? 'noopener noreferrer' : undefined}>
       <motion.div
         ref={ref}
         style={{ width, height }}
