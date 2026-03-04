@@ -1,27 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { TOOLS } from '../constants';
 import ToolCard from '../components/ToolCard';
-import FileUploader from '../components/FileUploader';
-import { FileState, ToolCategory } from '../types';
+import FileUploadDemo from '../components/file-upload-demo';
+import { ToolCategory } from '../types';
 import { ArrowRight } from 'lucide-react';
 
 const Home: React.FC = () => {
-  const [files, setFiles] = useState<FileState[]>([]);
-
   // Filter tools by category
   const pdfTools = TOOLS.filter(t => t.category === ToolCategory.PDF);
   const wordTools = TOOLS.filter(t => t.category === ToolCategory.WORD);
-  const extraTools = TOOLS.filter(t => t.category === ToolCategory.IMAGE || t.category === ToolCategory.UTILITY);
 
   const navigate = useNavigate();
-
-  // Quick redirect for the hero uploader
-  const handleHeroUpload = (files: FileState[]) => {
-    setFiles(files);
-    // Navigate to the tool page with the files in state
-    navigate('/tools/img-to-pdf', { state: { initialFiles: files } });
-  };
 
   return (
     <div className="pb-24">
@@ -42,31 +32,14 @@ const Home: React.FC = () => {
             style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '24px 24px' }}>
           </div>
 
-          {files.length === 0 ? (
-            <div className="relative z-10">
-              <FileUploader
-                onFilesSelected={handleHeroUpload}
-                accept="image/*" // Defaulting hero to image-to-pdf for demo
-                multiple={true}
-              />
-              <div className="mt-6">
-                <Link to="/tools" className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors font-medium">
-                  Explore all tools <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </div>
-          ) : (
-            <div className="text-center py-12">
-              <h3 className="text-2xl font-bold text-white mb-4">Files Ready!</h3>
-              <p className="text-slate-400 mb-8">You selected {files.length} files.</p>
-              <Link
-                to="/tools/img-to-pdf"
-                className="px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-full transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)]"
-              >
-                Proceed to Conversion
+          <div className="relative z-10">
+            <FileUploadDemo />
+            <div className="mt-6">
+              <Link to="/tools" className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors font-medium">
+                Explore all tools <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
-          )}
+          </div>
         </div>
       </section>
 
