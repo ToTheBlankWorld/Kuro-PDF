@@ -107,7 +107,7 @@ const ToolPage: React.FC = () => {
             <div className="p-3 bg-slate-800 rounded-xl text-cyan-400">
               <tool.icon className="w-8 h-8" />
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-cyan-400">{tool.name}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold text-blue-400">{tool.name}</h1>
           </div>
           <p className="text-slate-400 mb-8 text-lg">{tool.description}</p>
 

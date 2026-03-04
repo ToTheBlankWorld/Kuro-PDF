@@ -33,7 +33,7 @@ const Home: React.FC = () => {
           <div className="relative z-10">
             <FileUploadDemo />
             <div className="mt-6">
-              <Link to="/tools" className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors font-medium">
+              <Link to="/tools" className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors font-medium">
                 Explore all tools <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -60,7 +60,7 @@ const Home: React.FC = () => {
 
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-white mb-8 flex items-center gap-3">
-            <span className="w-2 h-8 bg-cyan-500 rounded-full block"></span>
+            <span className="w-2 h-8 bg-blue-500 rounded-full block"></span>
             Word Tools
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

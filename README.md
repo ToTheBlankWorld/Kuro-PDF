@@ -1,102 +1,101 @@
 # KuroPDF
 
-KuroPDF is a powerful, client-side file manipulation tool built with React, TypeScript, and Vite. It offers a comprehensive suite of utilities to manage, convert, and edit various file formats directly in your browser without uploading data to any server, ensuring maximum privacy and security.
+> Privacy-first file conversion and manipulation — 100% in your browser.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
+
+## What is KuroPDF?
+
+KuroPDF is a modern, open-source file toolkit built with React and TypeScript. Every operation runs entirely client-side — your files never leave your device, no servers, no uploads, no tracking.
 
 ## Features
 
 ### PDF Tools
-- **Merge PDF**: Combine multiple PDF files into a single document.
-- **Split PDF**: Extract individual pages from a PDF file.
-- **PDF to Images**: Convert PDF pages into high-quality images.
-- **Images to PDF**: Convert images (PNG, JPG) into a single PDF document.
-- **Watermark PDF**: Add text watermarks to your PDF files.
-  - **Customization**: Choose font, color, opacity, and position.
-- **Lock PDF**: Encrypt your PDF files with a password.
-- **PDF Layout**: Re-arrange PDF pages (2-up, 4-up) per sheet.
-- **PDF to Text**: Extract text content from PDF files.
-- **PDF to Word**: Convert PDF documents to editable Word files.
+- **Merge PDF** — Combine multiple PDFs into one
+- **Split PDF** — Extract individual pages
+- **PDF to Images** — Export PDF pages as high-quality images
+- **Images to PDF** — Pack images into a single PDF
+- **Watermark PDF** — Add custom text watermarks (font, color, opacity, position)
+- **Lock PDF** — Password-encrypt your PDFs
+- **PDF Layout** — Arrange pages 2-up or 4-up per sheet
+- **PDF to Text** — Extract plain text from PDFs
+- **PDF to Word** — Convert to editable DOCX
 
 ### Word Tools
-- **Word to PDF**: Convert DOCX files to PDF.
-- **Word to Text**: Extract raw text from Word documents.
-- **Merge Word**: Combine multiple Word documents.
-- **Watermark Word**: Add text watermarks to Word documents.
+- **Word to PDF** — Convert DOCX to PDF
+- **Word to Text** — Extract raw text from Word documents
+- **Merge Word** — Combine multiple DOCX files
+- **Watermark Word** — Add text watermarks to Word documents
 
 ## Tech Stack
 
-- **Frontend**: React, TypeScript, Vite
-- **Styling**: Tailwind CSS
-- **PDF Processing**: pdf-lib, jspdf, pdfjs-dist
-- **Word Processing**: mammoth, docx
-- **Icons**: lucide-react
-- **UI Components**: Aceternity UI
+| Layer | Technology |
+|---|---|
+| Framework | React 18 + TypeScript |
+| Build | Vite |
+| Styling | Tailwind CSS v3 |
+| Animations | Motion (Framer Motion) |
+| PDF | pdf-lib, jspdf, pdfjs-dist |
+| Word | mammoth, docx |
+| Icons | lucide-react, @tabler/icons-react |
+| UI | Aceternity UI components |
 
 ## Getting Started
 
-### Prerequisites
-- Node.js (v16 or higher)
-- npm (v7 or higher)
-
-### Installation
-
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-2. Start the development server:
-   ```bash
-   npm run dev
-   ```
-
-3. Open your browser and navigate to:
-   ```
-   http://localhost:5173
-   ```
-
-### Building for Production
-
 ```bash
+# Install dependencies
+npm install
+
+# Start dev server
+npm run dev
+
+# Build for production
 npm run build
+
+# Preview production build
+npm run preview
 ```
 
-The optimized production build will be created in the `dist` folder.
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-## Features Highlights
+## Deploying to Vercel
 
-- **100% Privacy**: All file processing happens locally in your browser. No files are uploaded to external servers.
-- **No Installation Required**: Use KuroPDF directly from your web browser.
-- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices.
-- **Multiple Format Support**: Handle PDF, Word documents, and various image formats.
-- **User-Friendly Interface**: Intuitive design for easy file manipulation.
+1. Push this repo to GitHub
+2. Go to [vercel.com](https://vercel.com) ? New Project ? Import your repo
+3. Framework: **Vite** (auto-detected)
+4. Build command: `npm run build`
+5. Output directory: `dist`
+6. Click **Deploy**
+
+No environment variables needed — everything runs client-side.
 
 ## Project Structure
 
 ```
-â”œâ”€â”€ components/          # Reusable React components
-â”œâ”€â”€ pages/              # Page components
-â”œâ”€â”€ services/           # Service utilities
-â”œâ”€â”€ App.tsx             # Main application component
-â”œâ”€â”€ constants.tsx       # Application constants
-â”œâ”€â”€ types.ts            # TypeScript type definitions
-â”œâ”€â”€ tailwind.config.js  # Tailwind CSS configuration
-â”œâ”€â”€ vite.config.ts      # Vite configuration
-â””â”€â”€ tsconfig.json       # TypeScript configuration
++-- components/          # UI components
+¦   +-- ui/              # Aceternity UI primitives
+¦   +-- Navbar.tsx
+¦   +-- ToolCard.tsx
+¦   +-- Background.tsx
+¦   +-- ...
++-- pages/
+¦   +-- Home.tsx
+¦   +-- ToolsPage.tsx
+¦   +-- ToolPage.tsx
++-- services/
+¦   +-- toolService.ts   # All file processing logic
++-- lib/
+¦   +-- utils.ts
++-- constants.tsx         # Tool definitions
++-- types.ts
++-- App.tsx
++-- index.tsx
 ```
 
-## Browser Support
+## Privacy
 
-KuroPDF works on all modern browsers that support:
-- ES6+ JavaScript
-- Web Workers
-- Canvas API
-- File API
+All file operations use browser-native APIs (File API, Canvas, Web Workers). No data is ever sent to any external server.
 
 ## License
 
-This project is open source and available for personal and commercial use.
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit pull requests or open issues for bugs and feature requests.
-
+MIT — free for personal and commercial use.

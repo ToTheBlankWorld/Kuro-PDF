@@ -51,7 +51,7 @@ export default function FloatingDockDemo() {
       icon: (
         <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "https://github.com/midhun-404",
+      href: "https://github.com/ToTheBlankWorld",
       target: "_blank",
     },
   ];

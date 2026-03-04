@@ -25,7 +25,7 @@ const App: React.FC = () => {
         </main>
 
         <footer className="w-full py-8 text-center text-slate-500 text-sm relative z-10 border-t border-slate-800/50 mt-12">
-          <p>© 2025 KuroPDF. All rights reserved.</p>
+          <p>© 2026 Kuro PDF. All rights reserved.</p>
         </footer>
       </div>
     </Router>
