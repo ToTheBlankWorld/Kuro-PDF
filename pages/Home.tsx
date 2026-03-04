@@ -5,6 +5,7 @@ import ToolCard from '../components/ToolCard';
 import FileUploadDemo from '../components/file-upload-demo';
 import CoverDemo from '../components/cover-demo';
 import GlowingEffectDemo from '../components/glowing-effect-demo';
+import { GlowingEffect } from '../components/ui/glowing-effect';
 import { ToolCategory } from '../types';
 import { ArrowRight } from 'lucide-react';
 
@@ -54,7 +55,13 @@ const Home: React.FC = () => {
             PDF Tools
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {pdfTools.map(tool => <ToolCard key={tool.id} tool={tool} />)}
+            {pdfTools.map(tool => (
+              <div key={tool.id} className="h-full">
+                <GlowingEffect>
+                  <ToolCard tool={tool} />
+                </GlowingEffect>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -64,7 +71,13 @@ const Home: React.FC = () => {
             Word Tools
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {wordTools.map(tool => <ToolCard key={tool.id} tool={tool} />)}
+            {wordTools.map(tool => (
+              <div key={tool.id} className="h-full">
+                <GlowingEffect>
+                  <ToolCard tool={tool} />
+                </GlowingEffect>
+              </div>
+            ))}
           </div>
         </div>
       </section>

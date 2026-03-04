@@ -2,7 +2,7 @@ import React from 'react';
 
 const Background: React.FC = () => {
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none bg-slate-950">
+    <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none" style={{ backgroundColor: '#000000' }}>
       {/* Gradient Orbs */}
       <div className="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] rounded-full bg-indigo-600/20 blur-[120px] animate-float" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-purple-600/20 blur-[120px] animate-float-delayed" />
